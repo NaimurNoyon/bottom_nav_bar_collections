@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:shimmer/shimmer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -193,6 +194,8 @@ class Page1 extends StatelessWidget {
                 fontFamily: 'Horizon',
               ),
               child: AnimatedTextKit(
+                pause: Duration(seconds: 1),
+                totalRepeatCount: 2,
                 animatedTexts: [
                   RotateAnimatedText('AWESOME'),
                   RotateAnimatedText('OPTIMISTIC'),
@@ -317,7 +320,39 @@ class Page3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.red, child: const Center(child: Text('')));
+        color: Colors.white,
+        child: Center(
+          child: SizedBox(
+            width: 200.0,
+            height: 100.0,
+            child: Shimmer.fromColors(
+              baseColor: Colors.deepPurple,
+              highlightColor: Colors.red,
+              child: const Column(
+                children: [
+                  Text(
+                    'NETRO',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 60.0,
+                      fontWeight:
+                      FontWeight.bold,
+                    ),
+                  ),
+                  // Text(
+                  //   'CREATIVE',
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(
+                  //     fontSize: 20.0,
+                  //     color: Colors.deepPurple
+                  //   ),
+                  // ),
+                ],
+              ),
+            ),
+          ),
+        )
+    );
   }
 }
 
